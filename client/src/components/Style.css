@@ -1,0 +1,141 @@
+.container {
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  background-image: linear-gradient(79deg, #356945, #45b1b1 48%, #30c5e5);
+}
+
+.form,
+.login,
+.register {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 400px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 820px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 1130px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .form {
+    padding: 3rem;
+    border: 3px solid #fff;
+    border-radius: 20px;
+  }
+}
+
+label {
+  text-align: left;
+  padding: 0.25rem 0;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+}
+
+button {
+  background-image: linear-gradient(79deg, #356945 5%, #45b1b1 48%, #30c5e5);
+  border-radius: 40px;
+  padding: 10px;
+  color: #fff;
+  border-width: 4;
+  border-color: #000;
+  font-size: 17px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  border-color: #fff;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.linkbtn {
+  text-decoration: underline;
+  border: none;
+  background: none;
+  color: #356945;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.head2 {
+  color: #fff;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.imagefg {
+  height: 5px;
+  width: 5px;
+}
