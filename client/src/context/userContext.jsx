@@ -40,7 +40,6 @@ const UserProvider = ({ children }) => {
       phoneno,
     });
     setUser(res.data.user);
-    console.log(res.data);
     localStorage.setItem("token", res.data.token);
   };
 
