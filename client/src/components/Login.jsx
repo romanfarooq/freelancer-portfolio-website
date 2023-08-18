@@ -1,14 +1,20 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/userContext";
 import "./Style.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const { login } = useContext(UserContext);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    await login(email, password);
+    navigate("/");
   };
 
   return (

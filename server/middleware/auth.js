@@ -1,4 +1,4 @@
-import { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
 function middleware(req, res, next) {
@@ -7,7 +7,7 @@ function middleware(req, res, next) {
     if (!token) {
       return res.status(401).json({ message: "Authentication failed" });
     }
-    const decodedToken = verify(token, process.env.JWT_SECRET);
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     req.user = User.findById(decodedToken.id).select("-password");
 

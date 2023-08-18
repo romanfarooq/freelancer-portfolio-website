@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/userContext";
 import "./Style.css";
 
 const Register = () => {
@@ -9,9 +10,14 @@ const Register = () => {
   const [lastname, setlastName] = useState("");
   const [phoneno, setPhoneno] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const { register } = useContext(UserContext);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email);
+    await register(email, password, firstname, lastname, phoneno);
+    navigate("/");
   };
 
   return (
@@ -40,7 +46,7 @@ const Register = () => {
           <label htmlFor="phoneno">Phone No</label>
           <input
             value={phoneno}
-            type="number"
+            type="text"
             onChange={(e) => setPhoneno(e.target.value)}
             placeholder="Phone No"
             id="phoneno"

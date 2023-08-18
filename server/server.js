@@ -4,8 +4,8 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
 import connectDB from "./config/db.js";
-// import authRoutes from "./routes/auth.js";
-// import portfolioRoutes from "./routes/portfolio.js";
+import authRoutes from "./routes/userRoute.js";
+import portfolioRoutes from "./routes/portfolioRoute.js";
 
 // Config
 dotenv.config();
@@ -33,8 +33,8 @@ connectDB();
 // });
 
 // Routes
-// app.use('/api/auth', authRoutes);
-// app.use('/api/portfolio', portfolioRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/portfolio', portfolioRoutes);
 
 // Server
 app.listen(PORT, () => {
