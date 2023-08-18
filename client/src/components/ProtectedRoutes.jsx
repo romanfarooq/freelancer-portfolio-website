@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoutes = () => {
   //   const { currentUser } = useAuth();
-  let currentUser = false;
+  let currentUser = true;
   return currentUser ? <Outlet /> : <Navigate to="/login" />;
 };
 

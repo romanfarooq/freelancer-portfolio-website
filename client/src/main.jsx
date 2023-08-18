@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./App";
+import Layout from "./components/Layout";
+import About from "./components/About";
 import Login from "./components/Login";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Register from "./components/Register";
@@ -14,13 +16,16 @@ import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <>
       <Route element={<ProtectedRoutes />}>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<App />} />
+          <Route path="/about" element={<About />} />
+        </Route>
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-    </Route>
+    </>
   )
 );
 
