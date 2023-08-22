@@ -5,8 +5,8 @@ import { UserContext } from "../context/userContext";
 export default function Layout() {
   const { logout } = useContext(UserContext);
 
-  function handleLogout() {
-    logout();
+  async function handleLogout() {
+    await logout();
   }
   return (
     <>

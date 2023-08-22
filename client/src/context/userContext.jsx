@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import axios from "../api/axios";
 
@@ -6,44 +6,66 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  //   useEffect(() => {
-  //     const getUser = async () => {
-  //       try {
-  //         const res = await axios.get("/auth/user");
-  //         setUser(res.data);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     };
-  //     getUser();
-  //   }, []);
+  useEffect(() => {
+    const getMe = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get("/auth/me");
+        setUser(res.data.user);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getMe();
+  }, []);
 
   const login = async (email, password) => {
-    const res = await axios.post("/api/auth/login", { email, password });
-    setUser(res.data.user);
-    localStorage.setItem("token", res.data.token);
+    try {
+      setLoading(true);
+      const res = await axios.post("/auth/login", { email, password });
+      setUser(res.data.user);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const logout = () => {
-    // await axios.get("/api/auth/logout");
-    setUser(null);
-    localStorage.removeItem("token");
+  const logout = async () => {
+    try {
+      setLoading(true);
+      await axios.get("/auth/logout");
+      setUser(null);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const register = async (email, password, firstName, lastName, phoneno) => {
-    const res = await axios.post("/api/auth/register", {
-      email,
-      password,
-      firstName,
-      lastName,
-      phoneno,
-    });
-    setUser(res.data.user);
-    localStorage.setItem("token", res.data.token);
+    try {
+      setLoading(true);
+      const res = await axios.post("/auth/register", {
+        email,
+        password,
+        firstName,
+        lastName,
+        phoneno,
+      });
+      setUser(res.data.user);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const value = { user, login, logout, register };
+  const value = { user, loading, login, logout, register };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };

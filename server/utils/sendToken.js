@@ -7,7 +7,15 @@ function sendToken(user, statusCode, res) {
 
   const { password, ...rest } = user._doc;
 
-  res.status(statusCode).json({ user: rest, token });
+  const options = {
+    expires: new Date(
+      Date.now() +
+        24 * 60 * 60 * 1000 * parseInt(process.env.JWT_COOKIE_EXPIRES)
+    ),
+    httpOnly: true,
+  };
+
+  res.status(statusCode).cookie("token", token, options).json({ user: rest });
 }
 
 export default sendToken;
