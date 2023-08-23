@@ -6,7 +6,8 @@ import Loader from "./Loader";
 const ProtectedRoutes = () => {
   const { user, loading } = useContext(UserContext);
   if (loading) return <Loader />;
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  else if (user) return <Outlet />;
+  else return <Navigate to="/login" />;
 };
 
 export default ProtectedRoutes;

@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getMe = async () => {
@@ -15,7 +15,7 @@ const UserProvider = ({ children }) => {
         const res = await axios.get("/auth/me");
         setUser(res.data.user);
       } catch (error) {
-        console.error(error);
+        console.error(error.response.data.message);
       } finally {
         setLoading(false);
       }
@@ -29,7 +29,7 @@ const UserProvider = ({ children }) => {
       const res = await axios.post("/auth/login", { email, password });
       setUser(res.data.user);
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -41,7 +41,7 @@ const UserProvider = ({ children }) => {
       await axios.get("/auth/logout");
       setUser(null);
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -59,7 +59,7 @@ const UserProvider = ({ children }) => {
       });
       setUser(res.data.user);
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
